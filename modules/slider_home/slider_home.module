@@ -1,0 +1,60 @@
+<?php
+
+function slider_home_block_info() {
+    $blocks = array();
+    $blocks['slider_home_nodos'] = array(
+       'info' => t("NutrInfantil: Define el Slider del home"),
+       'cache' => DRUPAL_CACHE_CUSTOM,
+        );
+    $blocks['videos_home'] = array(
+       'info' => t("NutrInfantil: Define el Slider de Videos"),
+       'cache' => DRUPAL_CACHE_CUSTOM,
+        );
+    return $blocks;
+}
+
+
+
+function slider_home_block_view($delta = '') {
+    $block = array();
+    switch ($delta) {
+    	case 'slider_home_nodos':
+        $variables['nodes'] = get_nodos_slider(1);
+        //var_dump($variables);
+        $block['content'] = theme('slider_home_theme', $variables);
+      break;
+      case 'videos_home':
+        $variables['nodos'] = get_nodos_slider(2);
+        $block['content'] = theme('slider_video_home_theme', $variables);
+        break;
+    }
+   return $block;
+}
+
+function get_nodos_slider($idNodeque){
+
+  $result = db_query("select * FROM nodequeue_nodes WHERE qid = :fx ORDER BY position ASC;",
+            array(':fx' => $idNodeque));
+  while ($record = $result->fetchAssoc()){
+    $arraynodos[] = $record;
+  };
+
+  foreach ($arraynodos as $key => $value) {
+    $nodoso = node_load($value["nid"]);
+    $nodos[] = $nodoso;
+  }
+  //$nodos['tax'] = $arraynodos[0];
+  return $nodos;
+
+}
+
+function slider_home_theme(){
+    return array(
+    	'slider_home_theme' => array(
+        'template' => 'theme/slider_home_theme'
+      ),
+      'slider_video_home_theme' => array(
+        'template' => 'theme/slider_video_home_theme'
+      ),
+    );
+}

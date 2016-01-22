@@ -1,0 +1,9 @@
+; $Id$
+
+name = BRM Nutri Infantil
+description = Define la logica Custom de Nutri Infantil
+
+package = Modulos Customs Nutrinfantil
+version = VERSION
+core = 7.x
+files[] = BRM_nutrinfantil.module

@@ -1,0 +1,9 @@
+; $Id$
+
+name = Slider Home Nitrinfantil
+description = Define el Slider del home
+
+package = Modulos Customs Nutrinfantil
+version = VERSION
+core = 7.x
+files[] = slider_home.module

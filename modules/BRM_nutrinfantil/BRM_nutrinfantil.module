@@ -1,0 +1,73 @@
+<?php
+
+function BRM_nutrinfantil_block_info() {
+    $blocks = array();
+    $blocks['eventos_home_block'] = array(
+       'info' => t("NutrInfantil: Define los eventos en el HOME"),
+       'cache' => DRUPAL_CACHE_CUSTOM,
+        );
+    $blocks['frase_home_block'] = array(
+       'info' => t("NutrInfantil: Define las frases citadas en el HOME"),
+       'cache' => DRUPAL_CACHE_CUSTOM,
+        );
+    return $blocks;
+}
+
+
+
+function BRM_nutrinfantil_block_view($delta = '') {
+    $block = array();
+    switch ($delta) {
+    	case 'eventos_home_block':
+        $variables['nodes'] = get_nodos_ultimos_eventos();
+        //var_dump($variables);
+        $block['content'] = theme('eventos_home', $variables);
+      break;
+      case 'frase_home_block':
+        $variables['nodes'] = get_nodos_frases();
+        $block['content'] = theme('frases_home', $variables);
+      break;
+    }
+   return $block;
+}
+
+function get_nodos_ultimos_eventos(){
+
+  $result = db_query("select * FROM node WHERE type = 'article' ORDER BY created DESC;");
+  while ($record = $result->fetchAssoc()){
+    $arraynodos[] = $record;
+  };
+
+  foreach ($arraynodos as $key => $value) {
+    $nodoso = node_load($value["nid"]);
+    $nodos[] = $nodoso;
+  }
+  //$nodos['tax'] = $arraynodos[0];*/
+  return $nodos;
+
+}
+
+function get_nodos_frases(){
+  $result = db_query("select * FROM node WHERE type = 'frase_citada' ORDER BY created DESC limit 1;");
+  while ($record = $result->fetchAssoc()){
+    $arraynodos[] = $record;
+  };
+
+  foreach ($arraynodos as $key => $value) {
+    $nodoso = node_load($value["nid"]);
+    $nodos[] = $nodoso;
+  }
+  //$nodos['tax'] = $arraynodos[0];*/
+  return $nodos;
+}
+
+function BRM_nutrinfantil_theme(){
+    return array(
+      'eventos_home' => array(
+        'template' => 'theme/eventos_home'
+      ),
+      'frases_home' => array(
+        'template' => 'theme/frases_home'
+      ),
+    );
+}

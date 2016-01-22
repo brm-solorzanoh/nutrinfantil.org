@@ -1,0 +1,59 @@
+@font-face {
+	font-family: 'icon-redes-sociales';
+	src:url('../fonts/icon-redes-sociales/icon-redes-sociales.eot?kstwge');
+	src:url('../fonts/icon-redes-sociales/icon-redes-sociales.eot?kstwge#iefix') format('embedded-opentype'),
+		url('../fonts/icon-redes-sociales/icon-redes-sociales.ttf?kstwge') format('truetype'),
+		url('../fonts/icon-redes-sociales/icon-redes-sociales.woff?kstwge') format('woff'),
+		url('../fonts/icon-redes-sociales/icon-redes-sociales.svg?kstwge#icon-redes-sociales') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icon-redes-sociales';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-twitter {
+	content: "\e800";
+}
+.icon-instagram {
+	content: "\e801";
+}
+.icon-google {
+	content: "\e802";
+}
+.icon-youtube {
+	content: "\e803";
+}
+.icon-facebook {
+	content: "\e804";
+}
+
+/*ie7*/
+
+.icon-twitter {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe800;');
+}
+.icon-instagram {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe801;');
+}
+.icon-google {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe802;');
+}
+.icon-youtube {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe803;');
+}
+.icon-facebook {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe804;');
+}
+
