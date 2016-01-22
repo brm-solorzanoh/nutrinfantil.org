@@ -90,6 +90,7 @@
  * @see adaptivetheme_preprocess_page()
  * @see adaptivetheme_process_page()
  */
+global $base_path;
 ?>
 
   <!--Header-->
@@ -207,7 +208,7 @@
               </div>
               <!--enlaces relacionados-->
               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 footer-info">
-                <h5>ENLACES RELACIONADOS</h5><img src="sites/all/themes/nutrinfantil/images/fxb.png" alt="">
+                <h5>ENLACES RELACIONADOS</h5><img src="<?php print_r($base_path); ?>sites/all/themes/nutrinfantil/images/fxb.png" alt="">
                 <p>www.fxb.org</p>
               </div>
               <!--temas relacionados-->
